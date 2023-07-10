@@ -1,5 +1,6 @@
 package com.example.virginmoney
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,7 @@ import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
@@ -116,48 +118,44 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.btnGoogle).setOnClickListener{
-            signInRequest = BeginSignInRequest.builder()
-                .setGoogleIdTokenRequestOptions(
-                    BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-                        .setSupported(true)
-                        // Your server's client ID, not your Android client ID.
-                        .setServerClientId(getString(R.string.your_web_client_id))
-                        // Only show accounts previously used to sign in.
-                        .setFilterByAuthorizedAccounts(true)
-                        .build())
-                .build()
-
+            val signInIntent = googleSignInClient.signInIntent
+            startActivityForResult(signInIntent, RC_SIGN_IN)
 
         }
 
-
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        when (requestCode) {
-            REQ_ONE_TAP -> {
-                try {
-                    val credential = oneTapClient.getSignInCredentialFromIntent(data)
-                    val idToken = credential.googleIdToken
-                    when {
-                        idToken != null -> {
-                            // Got an ID token from Google. Use it to authenticate
-                            // with Firebase.
-                            Log.d(TAG, "Got ID token.")
-                        }
-                        else -> {
-                            // Shouldn't happen.
-                            Log.d(TAG, "No ID token!")
-                        }
-                    }
-                } catch (e: ApiException) {
-                    // ...
-                }
-            }
         }
-        // ...
+    companion object {
+        private const val TAG = "GoogleActivity"
+        private const val RC_SIGN_IN = 9001
     }
 
-}
+
+    }
+//
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//        when (requestCode) {
+//            REQ_ONE_TAP -> {
+//                try {
+//                    val credential = oneTapClient.getSignInCredentialFromIntent(data)
+//                    val idToken = credential.googleIdToken
+//                    when {
+//                        idToken != null -> {
+//                            // Got an ID token from Google. Use it to authenticate
+//                            // with Firebase.
+//                            Log.d(TAG, "Got ID token.")
+//                        }
+//                        else -> {
+//                            // Shouldn't happen.
+//                            Log.d(TAG, "No ID token!")
+//                        }
+//                    }
+//                } catch (e: ApiException) {
+//                    // ...
+//                }
+//            }
+//        }
+//        // ...
+//    }
+
