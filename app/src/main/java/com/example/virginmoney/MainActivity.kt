@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var signInRequest: BeginSignInRequest
     private val TAG: String? = "MAIN_ACTIVITY"
-    private lateinit var  analytics: FirebaseAnalytics
-    private lateinit var auth:FirebaseAuth
+    private lateinit var analytics: FirebaseAnalytics
+    private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
 
@@ -41,10 +41,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        analytics= Firebase.analytics
+        analytics = Firebase.analytics
         auth = Firebase.auth
         // Configure Google Sign In
-        val gso = GoogleSignInOptions.Builder( GoogleSignInOptions.DEFAULT_SIGN_IN)
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
@@ -52,12 +52,12 @@ class MainActivity : AppCompatActivity() {
 
         val emailInput = findViewById<EditText>(R.id.username)
         val passwordInput = findViewById<EditText>(R.id.password)
-        val nameOfUser= findViewById<TextView>(R.id.tvName)
+        val nameOfUser = findViewById<TextView>(R.id.tvName)
 
 
 
         findViewById<Button>(R.id.btnLogin).setOnClickListener {
-          //  logEvent()
+            //  logEvent()
             val username = emailInput.text.toString().trim()
             val password = passwordInput.text.toString().trim()
             //assuming both are valid inputs
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                         Log.d(TAG, "signInWithEmail:success")
                         val user = auth.currentUser
                         nameOfUser.text = user?.email
-                        Toast.makeText(this,"Logged In!",Toast.LENGTH_SHORT)
+                        Toast.makeText(this, "Logged In!", Toast.LENGTH_SHORT)
 
 //                        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 //                        navController.navigate(R.id.homeFragment)
@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity() {
                         Log.d(TAG, "signInWithEmail:success")
                         val user = auth.currentUser
                         nameOfUser.text = user?.email
-                        Toast.makeText(this,"Signed Up!",Toast.LENGTH_SHORT)
+                        Toast.makeText(this, "Signed Up!", Toast.LENGTH_SHORT)
 
 //                        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 //                        navController.navigate(R.id.homeFragment)
@@ -117,20 +117,21 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        findViewById<Button>(R.id.btnGoogle).setOnClickListener{
+        findViewById<Button>(R.id.btnGoogle).setOnClickListener {
             val signInIntent = googleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
 
         }
 
-        }
+    }
+
     companion object {
         private const val TAG = "GoogleActivity"
         private const val RC_SIGN_IN = 9001
     }
 
 
-    }
+}
 //
 //    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 //        super.onActivityResult(requestCode, resultCode, data)
