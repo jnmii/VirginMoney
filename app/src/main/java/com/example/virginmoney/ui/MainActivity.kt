@@ -1,20 +1,18 @@
-package com.example.virginmoney
+package com.example.virginmoney.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.util.StatsLog.logEvent
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.navigation.Navigation
+import com.example.virginmoney.R
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
@@ -69,6 +67,10 @@ class MainActivity : AppCompatActivity() {
                         val user = auth.currentUser
                         nameOfUser.text = user?.email
                         Toast.makeText(this, "Logged In!", Toast.LENGTH_SHORT)
+
+                        val intent = Intent(this, HomeFragment::class.java)
+                        startActivity(intent)
+                        finish()
 
 //                        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 //                        navController.navigate(R.id.homeFragment)
