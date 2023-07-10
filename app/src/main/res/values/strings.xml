@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">VirginMoney</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="Register">Register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="your_web_client_id">592064062672-igme9a8t5vlh6ageta649bp3pv03j76i.apps.googleusercontent.com</string>
+</resources>
