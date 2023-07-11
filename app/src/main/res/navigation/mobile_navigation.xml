@@ -5,9 +5,9 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/mainFragment">
 
-    <fragment
+    <activity
         android:id="@+id/mainFragment"
-        android:name="com.example.virginmoney.ui.MainFragment"
+        android:name="com.example.virginmoney.ui.MainActivity"
         android:label="Main"
         tools:layout="@layout/fragment_main" />
 
