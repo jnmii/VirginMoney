@@ -6,7 +6,7 @@ import retrofit2.http.Path
 
 interface PeopleCall {
     @GET(ApiDetails.PERSON_END_POINT)
-    suspend fun  getPersonById(@Path("id") id:Int):PeopleModel
+    suspend fun  getPersonById(@Path("id") id:String):PeopleModel
 
     @GET(ApiDetails.PEOPLE_END_POINT)
     suspend fun getAllPeople() : List<PeopleModel>

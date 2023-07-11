@@ -6,11 +6,11 @@ import retrofit2.http.Path
 
 interface Repository {
 
-    suspend fun  getPersonById(@Path("id") id:Int): PeopleModel
+    suspend fun  getPersonById(@Path("id") id:String): PeopleModel
 
     suspend fun getAllPeople() : List<PeopleModel>
 
-    suspend fun getSingleRoom(@Path("id")id:Int): RoomModel
+    suspend fun getSingleRoom(@Path("id")id:String): RoomModel
 
     suspend fun getAllRooms():List<RoomModel>
 

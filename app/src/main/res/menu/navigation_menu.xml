@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/mainActivity"
+            android:title="Home"
+            android:icon="@drawable/my_project"
+            />
+
+        <item
+            android:id="@+id/peopleFragment"
+            android:title="People"
+            android:icon="@drawable/group"
+            />
+
+        <item
+            android:id="@+id/roomsFragment"
+            android:title="Rooms"
+            android:icon="@drawable/open_door"
+            />
+
+    </group>
+
+</menu>

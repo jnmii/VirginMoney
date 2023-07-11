@@ -9,5 +9,5 @@ interface RoomCall {
     suspend fun getAllRooms():List<RoomModel>
 
     @GET(ApiDetails.SINGLE_ROOM_END_POINT)
-    suspend fun getSingleRoom(@Path("id")id:Int): RoomModel
+    suspend fun getSingleRoom(@Path("id")id:String): RoomModel
 }

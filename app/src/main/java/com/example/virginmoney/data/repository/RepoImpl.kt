@@ -10,11 +10,11 @@ class RepoImpl @Inject constructor(
     val roomCall: RoomCall,
     val peopleCall: PeopleCall
 ):Repository {
-    override suspend fun  getPersonById(id:Int)= peopleCall.getPersonById(id)
+    override suspend fun  getPersonById(id:String)= peopleCall.getPersonById(id)
 
     override suspend fun getAllPeople()= peopleCall.getAllPeople()
 
-    override suspend fun getSingleRoom(id:Int)= roomCall.getSingleRoom(id)
+    override suspend fun getSingleRoom(id:String)= roomCall.getSingleRoom(id)
 
     override suspend fun getAllRooms()= roomCall.getAllRooms()
 }
